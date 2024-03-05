@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import WoodieMainPage from './WoodieMain/index';
+import WoodieNavBar from './WoodieNavBar';
+
 import reportWebVitals from './reportWebVitals';
+import WoodieFooter from './WoodieFooter';
+
+import "@fontsource/nunito";
+import WoodieTeamPage from './WoodieTeamPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Router>
+    <WoodieNavBar />
+    <WoodieFooter />
+    <Routes>
+      <Route path='/' element={<WoodieMainPage />} />
+      <Route path='/teams/:team' element={<WoodieTeamPage />} />
+    </Routes>
+  </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
