@@ -4,10 +4,16 @@ import { GoSearch } from 'react-icons/go';
 import { SearchBarContainer, SearchForm, SearchInput } from "./styles";
 
 import { getTeamList } from "../api";
+import WoodieResultsPage from "../WoodieResultsPage";
 
 function WoodieSearchBar() {
     const [teamList, setTeamList] = useState(localStorage.getItem('teams'));
     const [search, setSearch] = useState('');
+    const [results, setResults] = useState('');
+
+    const handleSubmit = () => {
+        setResults(search);
+    };
 
     useEffect(() => {
         const fetchTeams = async (val) => {
@@ -25,7 +31,7 @@ function WoodieSearchBar() {
     return (
         <SearchBarContainer>
             <GoSearch size={'20px'} style={{ position: 'absolute', marginLeft: '15px' }} />
-            <SearchForm>
+            <SearchForm onSubmit={handleSubmit}>
                 <SearchInput 
                     value={search} 
                     onChange={(e) => setSearch(e.target.value)}
@@ -36,3 +42,5 @@ function WoodieSearchBar() {
 }
 
 export default WoodieSearchBar;
+
+//<WoodieResultsPage> {results} </WoodieResultsPage>
