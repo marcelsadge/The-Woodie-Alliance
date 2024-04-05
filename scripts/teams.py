@@ -18,16 +18,23 @@ def get_team_list_export_to_file():
     page_count = 0
     teams = []
 
-    f = open("../data/teams.json", "w")
+    try:
+        f = open("../src/data/teams.json", "w")
+    except:
+        print("error creating file")
 
     while (page_count < MAX_PAGES) :
-        response = requests.get('https://www.thebluealliance.com/api/v3/teams/' + str(page_count),
-                                headers={"X-TBA-Auth-Key": GLOBAL_API_KEY})
-        
-        api_data = response.json()
+        try:
+            response = requests.get('https://www.thebluealliance.com/api/v3/teams/' + str(page_count),
+                                    headers={"X-TBA-Auth-Key": GLOBAL_API_KEY})
+            
+            api_data = response.json()
 
-        for team in api_data:
-            teams.append(team)
+            for team in api_data:
+                teams.append(team)
+
+        except:
+            print("error loading teams")
 
         page_count += 1
     

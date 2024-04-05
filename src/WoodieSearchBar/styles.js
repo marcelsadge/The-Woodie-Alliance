@@ -24,10 +24,32 @@ const SearchInput = styled(InputBase)`
     width: 343px;
 `;
 
+const WoodieTeam = styled.ul`
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 16px;
+    height: 25px;
+    width: 300px;
+    background-color: white;
+    color: black;
+`;
+
+const WoodieList = styled.div`
+    display: flex;
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+`;
+
 const SearchForm = styled.form``;
 
 export {
     SearchBarContainer,
     SearchForm,
-    SearchInput
+    SearchInput,
+    WoodieTeam,
+    WoodieList
 }
